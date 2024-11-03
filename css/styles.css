@@ -1,0 +1,30 @@
+@keyframes changeContent {
+  0% {
+    content: "United States";
+  }
+  50% {
+    content: "India";
+  }
+  75% {
+    content: "Germany";
+  }
+  100% {
+    content: "France";
+  }
+}
+
+.animated-text::after {
+  content: "";
+  animation: changeContent 2s infinite ease-in-out;
+}
+
+#registerDialog::backdrop,
+#loginDialog::backdrop {
+  background-color: rgb(0, 0, 0, 0.5);
+  filter: blur(50px);
+}
+
+/* To stop interaction with the background */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
