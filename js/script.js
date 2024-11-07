@@ -28,6 +28,14 @@ function setEndDate() {
   }
 }
 
+function dateValidate() {
+  const startDate = document.getElementById("startdate");
+  const endDate = document.getElementById("enddate").value;
+  if (endDate) {
+    startDate.setAttribute("max", endDate);
+  }
+}
+
 //Book Form Validation
 function validateAndSubmit(event) {
   event.preventDefault();
@@ -51,8 +59,8 @@ function validateAndSubmit(event) {
 }
 
 document.getElementById("startdate").addEventListener("change", setEndDate);
+document.getElementById("enddate").addEventListener("change", dateValidate);
 document.getElementById("submit").addEventListener("click", validateAndSubmit);
-
 // modal script
 function registerModal() {
   const rdialog = document.getElementById("registerDialog");
