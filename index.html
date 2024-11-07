@@ -13,7 +13,7 @@
     <title>FLYFAR - Travel Agency</title>
   </head>
   <body>
-    <nav class="md:flex p-3 md:mx-6 relative">
+    <nav class="md:flex p-3 md:px-6 sticky top-0 z-50 bg-white">
       <div class="flex justify-between items-center">
         <div class="flex items-center">
           <svg
@@ -28,7 +28,7 @@
               d="M6.428 1.151C6.708.591 7.213 0 8 0s1.292.592 1.572 1.151C9.861 1.73 10 2.431 10 3v3.691l5.17 2.585a1.5 1.5 0 0 1 .83 1.342V12a.5.5 0 0 1-.582.493l-5.507-.918-.375 2.253 1.318 1.318A.5.5 0 0 1 10.5 16h-5a.5.5 0 0 1-.354-.854l1.319-1.318-.376-2.253-5.507.918A.5.5 0 0 1 0 12v-1.382a1.5 1.5 0 0 1 .83-1.342L6 6.691V3c0-.568.14-1.271.428-1.849m.894.448C7.111 2.02 7 2.569 7 3v4a.5.5 0 0 1-.276.447l-5.448 2.724a.5.5 0 0 0-.276.447v.792l5.418-.903a.5.5 0 0 1 .575.41l.5 3a.5.5 0 0 1-.14.437L6.708 15h2.586l-.647-.646a.5.5 0 0 1-.14-.436l.5-3a.5.5 0 0 1 .576-.411L15 11.41v-.792a.5.5 0 0 0-.276-.447L9.276 7.447A.5.5 0 0 1 9 7V3c0-.432-.11-.979-.322-1.401C8.458 1.159 8.213 1 8 1s-.458.158-.678.599"
             />
           </svg>
-          <p class="font-bold text-2xl text-red-600">FLYFAR</p>
+          <p class="font-bold text-2xl text-red-600 cursor-pointer">FLYFAR</p>
         </div>
         <svg
           viewBox="0 0 24 24"
@@ -95,7 +95,7 @@
           <ul
             class="flex flex-col gap-4 md:gap-8 md:flex-row md:text-lg md:font-semibold"
           >
-            <li>Home</li>
+            <li><a href="#home"> Home </a></li>
             <li><a href="#book"> Book </a></li>
             <li class="inline-block relative group">
               <button class="text-nowrap">Packages &#11206;</button>
@@ -123,7 +123,7 @@
         </div>
         <div class="flex flex-col md:flex-row gap-2 md:gap-4">
           <button
-            class="border-2 px-4 py-1 rounded-md border-yellow-700 bg-yellow-700 hover:bg-transparent hover:text-yellow-700 text-white font-semibold"
+            class="border-2 px-4 py-1 rounded-md border-blue-800 bg-blue-800 hover:bg-transparent hover:text-blue-800 text-white font-semibold"
             onclick="loginModal()"
           >
             Login
@@ -140,14 +140,14 @@
     <main
       class="h-[92vh] bg-[url('images/Background.webp')] bg-cover bg-center bg-no-repeat flex justify-center items-center"
     >
-      <div class="text-center pt-32">
+      <div class="text-center pt-32" id="home">
         <h1 class="text-6xl md:text-8xl font-bold py-4 tracking-normal">
           WELCOME TO <span class="text-red-600">FLYFAR</span>
         </h1>
-        <p class="text-4xl font-bold text-yellow-700 py-4">
+        <p class="text-4xl font-bold text-blue-800 py-4">
           Visit
           <span
-            class="animated-text bg-yellow-700 text-white px-2 rounded-md"
+            class="animated-text bg-blue-800 text-white px-2 rounded-md"
           ></span>
         </p>
         <button
@@ -717,7 +717,7 @@
               memories that last a lifetime...
             </p>
             <button
-              class="border-2 p-1 border-yellow-700 bg-yellow-700 text-white font-semibold rounded-md hover:bg-transparent hover:text-yellow-700"
+              class="border-2 p-1 border-blue-800 bg-blue-800 text-white font-semibold rounded-md hover:bg-transparent hover:text-blue-800"
             >
               Read More...
             </button>
