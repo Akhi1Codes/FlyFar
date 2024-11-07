@@ -16,42 +16,49 @@ today.setDate(today.getDate() + 1);
 const startdate = today.toISOString().split("T")[0];
 document.getElementById("startdate").setAttribute("min", startdate);
 
-//EndDate
+// Set min attribute for end date based on start date
 function setEndDate() {
-  const startDate = document.getElementById("startdate").value;
-  const endDate = document.getElementById("enddate");
-  if (startDate) {
-    let EndDate = new Date(startDate);
-    EndDate.setDate(EndDate.getDate() + 1);
-    const futureEndDate = EndDate.toISOString().split("T")[0];
-    endDate.setAttribute("min", futureEndDate);
+  const startDateElement = document.getElementById("startdate");
+  const endDateElement = document.getElementById("enddate");
+
+  const startDateValue = startDateElement.value;
+  if (startDateValue) {
+    const endDateMin = new Date(startDateValue);
+    endDateMin.setDate(endDateMin.getDate() + 1);
+    const endDateMinString = endDateMin.toISOString().split("T")[0];
+
+    endDateElement.setAttribute("min", endDateMinString);
   }
 }
 
 function dateValidate() {
-  const startDate = document.getElementById("startdate");
-  const endDate = document.getElementById("enddate").value;
-  if (endDate) {
-    startDate.setAttribute("max", endDate);
+  const startDateElement = document.getElementById("startdate");
+  const endDateValue = document.getElementById("enddate").value;
+
+  if (endDateValue) {
+    startDateElement.setAttribute("max", endDateValue);
   }
 }
 
-//Book Form Validation
+// Book Form Validation
 function validateAndSubmit(event) {
   event.preventDefault();
-  const locations = document.getElementById("locations").value;
+
+  const location = document.getElementById("locations").value;
   const capacity = document.getElementById("capacity").value;
   const startDate = document.getElementById("startdate").value;
   const endDate = document.getElementById("enddate").value;
   const description = document.getElementById("description").value;
   const minTextLength = 50;
-  if (
+
+  const isValid =
     startDate &&
     endDate &&
-    locations &&
+    location &&
     capacity &&
-    description.length >= minTextLength
-  ) {
+    description.length >= minTextLength;
+
+  if (isValid) {
     alert("Booking Successful!");
   } else {
     alert("Please fill all the fields.");
@@ -92,13 +99,13 @@ function redirectToLogin() {
   loginModal();
 }
 
-function loginValidation(event) {
+function validateLogin(event) {
   event.preventDefault();
   const password = document.getElementById("password").value;
-  const passwordPattern =
+  const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  if (!passwordPattern.test(password)) {
+  if (!passwordRegex.test(password)) {
     alert(
       "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character."
     );
@@ -117,18 +124,19 @@ const maxDate = new Date(
 const maxDatestr = maxDate.toISOString().split("T")[0];
 document.getElementById("dob").setAttribute("max", maxDatestr);
 
-function registerValidation(event) {
+function validateRegisterForm(event) {
   event.preventDefault();
   const password = document.getElementById("registerPassword").value;
-  const passwordPattern =
+  const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-  if (!passwordPattern.test(password)) {
+  if (!passwordRegex.test(password)) {
     alert(
       "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character."
     );
-  } else {
-    alert("Registration Successful!");
-    closeRegisterModal();
+    return;
   }
+
+  alert("Registration Successful!");
+  closeRegisterModal();
 }
