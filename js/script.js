@@ -1,3 +1,10 @@
+const loginDetails = [
+  {
+    email: "test1@gmail.com",
+    password: "Text@1234",
+  },
+];
+
 //Navigation functions
 function openNav() {
   document.getElementById("openNav").style.display = "none";
@@ -101,6 +108,8 @@ function redirectToLogin() {
 
 function validateLogin(event) {
   event.preventDefault();
+  const email = document.getElementById("email").value;
+  let loginemail = loginDetails.find((details) => details.email === email);
   const password = document.getElementById("password").value;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -109,9 +118,15 @@ function validateLogin(event) {
     alert(
       "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character."
     );
-  } else {
+    return;
+  }
+  console.log(email);
+  console.log(loginemail);
+  if (email == loginemail?.email && password == loginemail?.password) {
     alert("Login Successful!");
     closeLoginModal();
+  } else {
+    alert("Wrong Email or Password! Try again");
   }
 }
 
@@ -126,6 +141,7 @@ document.getElementById("dob").setAttribute("max", maxDatestr);
 
 function validateRegisterForm(event) {
   event.preventDefault();
+  const email = document.getElementById("registerEmail").value;
   const password = document.getElementById("registerPassword").value;
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
@@ -135,8 +151,10 @@ function validateRegisterForm(event) {
       "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character."
     );
     return;
+  } else {
+    loginDetails.push({ email: email, password: password });
+    console.log(loginDetails);
+    alert("Registration Successful!");
   }
-
-  alert("Registration Successful!");
   closeRegisterModal();
 }
