@@ -120,8 +120,6 @@ function validateLogin(event) {
     );
     return;
   }
-  console.log(email);
-  console.log(loginemail);
   if (email == loginemail?.email && password == loginemail?.password) {
     alert("Login Successful!");
     closeLoginModal();
@@ -153,7 +151,6 @@ function validateRegisterForm(event) {
     return;
   } else {
     loginDetails.push({ email: email, password: password });
-    console.log(loginDetails);
     alert("Registration Successful!");
   }
   closeRegisterModal();
